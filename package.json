@@ -1,0 +1,183 @@
+{
+	"name": "clean-css-vscode",
+	"displayName": "Clean CSS",
+	"description": "Format your CSS files with a lot of options",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onLanguage:css",
+		"onCommand:clean-css-vscode.Format",
+		"onCommand:clean-css-vscode.FastBeauty",
+		"onCommand:clean-css-vscode.FastKeepBreaks",
+		"onCommand:clean-css-vscode.FastCompact"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "clean-css-vscode.Format",
+				"title": "Clean CSS: Format Document"
+			},{
+				"command": "clean-css-vscode.FastBeauty",
+				"title": "Clean CSS: Fast Beautify Format"
+			},{
+				"command": "clean-css-vscode.FastKBreaks",
+				"title": "Clean CSS: Fast Keep Breaks Format"
+			},{
+				"command": "clean-css-vscode.FastCompact",
+				"title": "Clean CSS: Fast Compact Format"
+			}
+		],
+		"configuration":[
+			{
+				"title": "Clean CSS",
+				"properties": {
+					"cleanCSS.formatterOptions.compatibility": {
+						"type": "string",
+						"default": "*",
+						"enum": ["ie10+","ie9","ie8","ie7"],
+						"enumDescriptions": [
+							"Compatibility mode for Internet Explorer 10+ (default)",
+							"Compatibility mode for Internet Explorer 9+",
+							"Compatibility mode for Internet Explorer 8+",
+							"Compatibility mode for Internet Explorer 7+"
+						],
+						"markdownDescription": "Controls compatibility mode used."
+					},
+					"cleanCSS.formatterOptions.format": {
+						"markdownDescription": "Format options. See [Clean CSS: Formatting Options](https://github.com/jakubpawlowicz/clean-css#formatting-options) for more info."
+					},
+					"cleanCSS.formatterOptions.format.breaks": {
+						"type": "object",
+						"default": { 
+							"afterAtRule": false, 
+							"afterBlockBegins": false, 
+							"afterBlockEnds": false, 
+							"afterComment": false, 
+							"afterProperty": false, 
+							"afterRuleBegins": false, 
+							"afterRuleEnds": false, 
+							"beforeBlockEnds": false, 
+							"betweenSelectors": false
+							},
+						"markdownDescription": "Controls where to insert line breaks. See [Clean CSS: Formatting Options](https://github.com/jakubpawlowicz/clean-css#formatting-options) for more info."
+					},
+					"cleanCSS.formatterOptions.format.breakWith": {
+						"type": "string",
+						"default": "\\n",
+						"markdownDescription": "Controls the new line character, can be `'\\r\\n'` or `'\\n'` (aliased as `'windows'` and `'unix'` or `'crlf'` and `'lf'`); defaults to system one, so former on Windows and latter on Unix"
+					},
+					"cleanCSS.formatterOptions.format.indentBy": {
+						"type": "number",
+						"default": "0" ,
+						"markdownDescription": "Controls number of characters to indent with; defaults to `0`"
+					},
+					"cleanCSS.formatterOptions.format.indentWith": {
+						"type": "string",
+						"default": "space",
+						"markdownDescription": "Controls a character to indent with, can be `'space'` or `'tab'`; defaults to `'space'``"
+					},
+					"cleanCSS.formatterOptions.format.spaces": {
+						"type":"object",
+						"default": {
+							"aroundSelectorRelation": false,
+							"beforeBlockBegins": false,
+							"beforeValue": false
+						},
+						"markdownDescription": "Controls where to insert spaces"
+					},
+					"cleanCSS.formatterOptions.format.wrapAt": {
+						"type":"boolean",
+						"default":false,
+						"markdownDescription": "Controls maximum line length; defaults to `false`"
+					},
+					"cleanCSS.formatterOptions.format.semicolonAfterLastProperty": {
+						"type":"boolean",
+						"default":false,
+						"markdownDescription": "Controls removing trailing semicolons in rule; defaults to `false` - means remove"
+					},
+					"cleanCSS.formatterOptions.inline": {
+						"type": "array",
+						"default": "['local']",
+						"markdownDescription": "Inline option whitelists which `@import` rules will be processed. See [Clean CSS: Inlining options](https://github.com/jakubpawlowicz/clean-css#inlining-options) for more info."
+					},
+					"cleanCSS.formatterOptions.level": {
+						"markdownDescription": "Optimization levels \nSee [Clean CSS: Optimization levels](https://github.com/jakubpawlowicz/clean-css#optimization-levels) for more info."
+					},
+					"cleanCSS.formatteroptions.level.1":{
+						"type":"object",
+						"default": {
+							"cleanupCharsets": true, 
+							"normalizeUrls": true, 
+							"optimizeBackground": true, 
+							"optimizeBorderRadius": true, 
+							"optimizeFilter": true, 
+							"optimizeFont": true, 
+							"optimizeFontWeight": true, 
+							"optimizeOutline": true, 
+							"removeEmpty": true, 
+							"removeNegativePaddings": true, 
+							"removeQuotes": true, 
+							"removeWhitespace": true, 
+							"replaceMultipleZeros": true, 
+							"replaceTimeUnits": true, 
+							"replaceZeroUnits": true, 
+							"roundingPrecision": false, 
+							"selectorsSortingMethod": "standard", 
+							"specialComments": "all", 
+							"tidyAtRules": true, 
+							"tidyBlockScopes": true, 
+							"tidySelectors": true
+						},
+						"markdownDescription": "Level 1 optimizations (default) operate on single properties only, e.g. can remove units when not required, turn rgb colors to a shorter hex representation, remove comments, etc. \n >**Tip:** There is an ´all´ shortcut for toggling all options at the same time. \n See [Clean CSS: Level 1 optimizations](https://github.com/jakubpawlowicz/clean-css#level-1-optimizations) for more info."
+					},
+					"cleanCSS.formatteroptions.level.2":{
+						"type":"object",
+						"default": {
+							"mergeAdjacentRules": true, 
+							"mergeIntoShorthands": true, 
+							"mergeMedia": true, 
+							"mergeNonAdjacentRules": true, 
+							"mergeSemantically": false, 
+							"overrideProperties": true, 
+							"removeEmpty": true, 
+							"reduceNonAdjacentRules": true, 
+							"removeDuplicateFontRules": true, 
+							"removeDuplicateMediaBlocks": true, 
+							"removeDuplicateRules": true, 
+							"removeUnusedAtRules": false, 
+							"restructureRules": false, 
+							"skipProperties": [] 
+						},
+						"markdownDescription": "Level 2 optimizations operate at rules or multiple properties level, e.g. can remove duplicate rules, remove properties redefined further down a stylesheet, or restructure rules by moving them around. \n >**Tip:** There is an ´all´ shortcut for toggling all options at the same time. \n See [Clean CSS: Level 2 optimizations](https://github.com/jakubpawlowicz/clean-css#level-2-optimizations) for more info."
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.52.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.1.2",
+		"vscode-test": "^1.4.1"
+	},
+	"dependencies": {
+		"clean-css": "^4.2.3"
+	}
+}
