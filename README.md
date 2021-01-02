@@ -1,5 +1,5 @@
 <h1 style="text-align: center;">
-    <img src="" alt="Clean CSS for VSCode" width="800px"/>
+    <img src="https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/clean-css-vscode-v1.svg" alt="Clean CSS for VSCode" width="800px"/>
 </h1>
 
 CSS file optimizer. Using [Clean CSS](https://github.com/jakubpawlowicz/clean-css) and adapting it to work as an extension of VSCode. 
@@ -20,12 +20,12 @@ CSS file optimizer. Using [Clean CSS](https://github.com/jakubpawlowicz/clean-cs
 
 `cleanCSS.debugTool.showOutput`: Display information about formatter usage on an output channel.
 
-![Clean CSS: Debug Output Channel example](images\debugOutputExample.png)
+![Clean CSS: Debug Output Channel example](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/debugOutputExample.png)
 
 ## Formatter Options
 
 All options in this group go directly to the formatter.
-See [Clean CSS: Options]([https://link](https://github.com/jakubpawlowicz/clean-css#constructor-options)) for more info about it.
+See [Clean CSS: Options](https://github.com/jakubpawlowicz/clean-css#constructor-options) for more info about it.
 
 ### List of Supported Settings in Settings UI
 
