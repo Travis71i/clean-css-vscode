@@ -1,5 +1,5 @@
 <h1 style="text-align: center;">
-    <img src="https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/clean-css-vscode-v1.svg" alt="Clean CSS for VSCode" width="800px"/>
+    <img src="https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/clean-css-vscode-v1.png" alt="Clean CSS for VSCode" width="800px"/>
 </h1>
 
 CSS file optimizer. Using [Clean CSS](https://github.com/jakubpawlowicz/clean-css) and adapting it to work as an extension of VSCode. 
