@@ -2,20 +2,15 @@
     <img src="" alt="Clean CSS for VSCode" width="800px"/>
 </h1>
 
-CSS file optimizer. Implementing [Clean CSS](https://github.com/jakubpawlowicz/clean-css) and adapting it to work as an extension of VSCode. 
+CSS file optimizer. Using [Clean CSS](https://github.com/jakubpawlowicz/clean-css) and adapting it to work as an extension of VSCode. 
 
-**Note:** The functionality of this extension depends entirely on Clean CSS. Thanks to [jakubpawlowicz](https://github.com/jakubpawlowicz) for creating and managing it!.
+**Note:** The functionality of this extension depends entirely on Clean CSS. Thanks to [jakubpawlowicz](https://github.com/jakubpawlowicz) for creating and managing it!
 
 # Features
 
-Compress CSS files using Clean CSS Optimizer
-![Using Command Palette](images/commandPalette.gif)
-
-Quickly format using different presets, in the editor context menu.
-![Using Editor Context Menu](images/editorContextMenu.gif) 
-
-Use "Clean CSS: Format Document" command (Shift+Alt+F) to format using user settings
-![Using UI Settings + Key Binding](images/UISettings.gif)
+- Compress CSS files using Clean CSS optimizer.
+- Quickly format using different presets, in the editor context menu.
+- Use "Clean CSS: Format Document" command (Shift+Alt+F) to format using user settings.
 
 # Extension Settings
 
