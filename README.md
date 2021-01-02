@@ -1,64 +1,72 @@
-# clean-css README
+<h1 style="text-align: center;">
+    <img src="" alt="Clean CSS for VSCode" width="800px"/>
+</h1>
 
-This is the README for your extension "clean-css". After writing up a brief description, we recommend including the following sections.
+CSS file optimizer. Implementing [Clean CSS](https://github.com/jakubpawlowicz/clean-css) and adapting it to work as an extension of VSCode. 
 
-## Features
+**Note:** The functionality of this extension depends entirely on Clean CSS. Thanks to [jakubpawlowicz](https://github.com/jakubpawlowicz) for creating and managing it!.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+# Features
 
-For example if there is an image subfolder under your extension project workspace:
+Compress CSS files using Clean CSS Optimizer
+![Using Command Palette](images/commandPalette.gif)
 
-\!\[feature X\]\(images/feature-x.png\)
+Quickly format using different presets, in the editor context menu.
+![Using Editor Context Menu](images/editorContextMenu.gif) 
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Use "Clean CSS: Format Document" command (Shift+Alt+F) to format using user settings
+![Using UI Settings + Key Binding](images/UISettings.gif)
 
-## Requirements
+# Extension Settings
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Debug Tool
 
-## Extension Settings
+### Show Output
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+`cleanCSS.debugTool.showOutput`: Display information about formatter usage on an output channel.
 
-For example:
+![Clean CSS: Debug Output Channel example](images\debugOutputExample.png)
 
-This extension contributes the following settings:
+## Formatter Options
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+All options in this group go directly to the formatter.
+See [Clean CSS: Options]([https://link](https://github.com/jakubpawlowicz/clean-css#constructor-options)) for more info about it.
 
-## Known Issues
+### List of Supported Settings in Settings UI
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+#### Compatibility
 
-## Release Notes
+- `cleanCSS.formatterOptions.compatibility` Type: string
 
-Users appreciate release notes as you update your extension.
+#### Format
 
-### 1.0.0
+- `cleanCSS.formatterOptions.format.breaks` Type: object
+- `cleanCSS.formatterOptions.format.breakWith` Type: string
+- `cleanCSS.formatterOptions.format.indentBy` Type: number
+- `cleanCSS.formatterOptions.format.indentWith` Type: string
+- `cleanCSS.formatterOptions.format.spaces` Type: object
+- `cleanCSS.formatterOptions.format.wrapAt` Type: number or boolean
+- `cleanCSS.formatterOptions.format.semicolonAfterLastProperty` Type: boolean
 
-Initial release of ...
+#### Inline
 
-### 1.0.1
+- `cleanCSS.formatterOptions.inline` Type: Array
 
-Fixed issue #.
+#### Levels
 
-### 1.1.0
+- `cleanCSS.formatterOptions.level.1` Type: object
+- `cleanCSS.formatterOptions.level.2` Type: object
 
-Added features X, Y, and Z.
+# Release Notes
+See [CHANGELOG.md](CHANGELOG.md) for more info.
 
------------------------------------------------------------------------------------------------------------
+## 1.0.0
 
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+### Added
+ - **"Clean CSS: Format Document" command** to format the whole document using the `settings.json` settings
+ - **"Clean CSS: Fast Compact" command** to compact the document into a single line, using default settings.
+ - **"Clean CSS: Fast Beautify" Format** command to format the document in a nice way, using default settings.
+ - **"Clean CSS: Fast Keep Breaks" Format** command to format the document in a compact but more readable way, using default settings.
+ - **"Format Document (Clean CSS)" submenu** in the editor context menu with all 4 commands listed above.
+ - **Key binding: "Format Document" (Ctrl+Shift+F)** to use `Clean CSS: Format Document` command.
+ - **Clean CSS output channel** to see more information about formatting. Such as some error and warning messages.
