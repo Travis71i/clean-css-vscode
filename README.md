@@ -15,7 +15,7 @@ CSS file optimizer. Using [Clean CSS](https://github.com/jakubpawlowicz/clean-cs
 - Compress CSS files using Clean CSS optimizer.
 
 ![Before //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/css_1.png)
-![After //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/deb/images/css_2.png)
+![After //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/css_2.png)
 
 - Quickly format using different presets, in the editor context menu.
 
