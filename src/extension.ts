@@ -1,32 +1,29 @@
 import * as vscode from 'vscode';
 const cleanCSS = require('clean-css');
 var debugCh: vscode.OutputChannel;
-var options: vscode.WorkspaceConfiguration;
+
+// List of commands to push.
+let CommandList: Array<vscode.Disposable> = [
+  vscode.commands.registerCommand('clean-css-vscode.Format', () => format()),
+  vscode.commands.registerCommand('clean-css-vscode.FastBeauty', () => format({ format: 'beautify' })),
+  vscode.commands.registerCommand('clean-css-vscode.FastKBreaks', () => format({ format: 'keep-breaks' })),
+  vscode.commands.registerCommand('clean-css-vscode.FastCompact', () => format({}))
+];
 
 // Activating extension
 export function activate(context: vscode.ExtensionContext) {
   // Add commands to the subscription array.
-  context.subscriptions.splice(0,0,...CommandList());
+  context.subscriptions.push(...CommandList);
   // Creating the Output Channel for warning, errors and info.
   debugCh = vscode.window.createOutputChannel("Clean CSS");
 }
 
-// List of commands to push. If you want to
-function CommandList(): Array<vscode.Disposable> {
-  return [
-    vscode.commands.registerCommand('clean-css-vscode.Format', () => format()),
-    vscode.commands.registerCommand('clean-css-vscode.FastBeauty', () => format({format: 'beautify'})),
-    vscode.commands.registerCommand('clean-css-vscode.FastKBreaks', () => format({format: 'keep-breaks'})),
-    vscode.commands.registerCommand('clean-css-vscode.FastCompact', () => format({}))
-  ]
-}
-
 //for "clean-css-vscode.Format" command and others
-function format(option?: object){
-  options = vscode.workspace.getConfiguration('cleanCSS');
+async function format(option?: object) {
+  let formatterOptions: any = vscode.workspace.getConfiguration('cleanCSS').get<Object>('formatterOptions');
   let editor = vscode.window.activeTextEditor;
   if (editor !== undefined) {
-    new cleanCSS(option ?? options.formatterOptions)
+    new cleanCSS(option ?? formatterOptions)
       .minify(editor.document.getText(), (error: object, output: { styles: string }) => CleanCSSCallback(error, output, editor));
   } else {
     vscode.window.showErrorMessage("Editor not available");
@@ -34,8 +31,8 @@ function format(option?: object){
 }
 
 //Use the Debug Output Channel
-function debugInfo(output: any) {
-  if (options.debugTool.showMessage) {
+function debugInfo(output: any) { 
+  if (vscode.workspace.getConfiguration('cleanCSS').get('debugTool.showMessage')) {
     debugCh.clear();
     debugCh.show();
     // Show a list of errors.
@@ -61,17 +58,18 @@ function debugInfo(output: any) {
 }
 
 //Callback for "minify" function of Clean CSS
-function CleanCSSCallback(error: object,output: {styles: string}, editor?: vscode.TextEditor){
-  // This 'cause typescript need to verify "editor" existence every time
+function CleanCSSCallback(error: object, output: { styles: string }, editor?: vscode.TextEditor) {
+  // This because typescript need to verify "editor" existence every time
   if (editor) {
-      editor.edit(edit => { edit.replace(
-        new vscode.Range(0, 0, 
-          editor.document.lineCount - 1, 
+    editor.edit(edit => {
+      edit.replace(
+        new vscode.Range(0, 0,
+          editor.document.lineCount - 1,
           editor.document.lineAt(editor.document.lineCount - 1).text.length),
         output.styles)
     });
     //Use Output channel to info.
-    debugInfo(output); 
+    debugInfo(output);
   } else {
     vscode.window.showErrorMessage(error.toString());
   }

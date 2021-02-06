@@ -7,15 +7,22 @@
 ![David](https://david-dm.org/Travis71i/clean-css-vscode.svg)
 ![LICENSE](https://img.shields.io/github/license/Travis71i/clean-css-vscode)
 
-CSS file optimizer. Using [Clean CSS](https://github.com/jakubpawlowicz/clean-css) and adapting it to work as an extension of VSCode. 
+**Notes:** The functionality of this extension depends entirely on Clean CSS. Thanks to [jakubpawlowicz](https://github.com/jakubpawlowicz) for creating and managing it!
 
-**Note:** The functionality of this extension depends entirely on Clean CSS. Thanks to [jakubpawlowicz](https://github.com/jakubpawlowicz) for creating and managing it!
+# What's new
+**Clean CSS has been updated to [version 5.0](https://github.com/jakubpawlowicz/clean-css#whats-new-in-version-50)**.
+You can see what has changed [here](https://github.com/jakubpawlowicz/clean-css/blob/master/History.md).
+
+These changes affect the functionality of the extension, but will not affect how it is handled in VSCode. Except for :
+>Changes default Internet Explorer compatibility from 10+ to >11, to revert the old default use { compatibility: 'ie10' } flag;
+
+To see a list of all the changes in this extension see [CHANGELOG.md](CHANGELOG.md).
 
 # Features
 - Compress CSS files using Clean CSS optimizer.
 
 ![Before //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/css_1.png)
-![After //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/deb/images/css_2.png)
+![After //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/css_2.png)
 
 - Quickly format using different presets, in the editor context menu.
 
@@ -24,6 +31,7 @@ CSS file optimizer. Using [Clean CSS](https://github.com/jakubpawlowicz/clean-cs
 - Use "Clean CSS: Format Document" command (Shift+Alt+F) to format using user settings.
 
 ![Settings UI //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/settings_ui.png)
+
 
 # Extension Settings
 
@@ -41,16 +49,5 @@ All options in this group go directly to the formatter. `cleanCSS.formatterOptio
     
 See [Clean CSS: Options](https://github.com/jakubpawlowicz/clean-css#constructor-options) for more info about the `options` object.
 
-# Release Notes
-See [CHANGELOG.md](CHANGELOG.md) for more info.
+# Current Version Changes
 
-## 1.0.0
-
-### Added
- - **"Clean CSS: Format Document" command** to format the whole document using the `settings.json` settings
- - **"Clean CSS: Fast Compact" command** to compact the document into a single line, using default settings.
- - **"Clean CSS: Fast Beautify" Format** command to format the document in a nice way, using default settings.
- - **"Clean CSS: Fast Keep Breaks" Format** command to format the document in a compact but more readable way, using default settings.
- - **"Format Document (Clean CSS)" submenu** in the editor context menu with all 4 commands listed above.
- - **Key binding: "Format Document" (Shift+Alt+F)** to use `Clean CSS: Format Document` command.
- - **Clean CSS output channel** to see more information about formatting. Such as some error and warning messages.
