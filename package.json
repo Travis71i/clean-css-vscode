@@ -3,17 +3,30 @@
 	"displayName": "Clean CSS for VSCode",
 	"publisher": "travis71i",
 	"description": "Format your CSS files using Clean CSS as a VSCode extension",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
-	"author": {"name": "Travis71i", "url": "https://github.com/Travis71i"},
-	"repository": {"type": "git", "url": "https://github.com/Travis71i/clean-css-vscode.git"},
-	"bugs": {"url": "https://github.com/Travis71i/clean-css-vscode/issues"},
+	"author": {
+		"name": "Travis71i",
+		"url": "https://github.com/Travis71i"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Travis71i/clean-css-vscode.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Travis71i/clean-css-vscode/issues"
+	},
 	"homepage": "https://github.com/Travis71i/clean-css-vscode",
 	"private": true,
 	"license": "MIT",
-	"keywords": ["css","formatter","vscode"],
+	"keywords": [
+		"css",
+		"formatter",
+		"vscode",
+		"minify"
+	],
 	"icon": "icon.png",
 	"categories": [
 		"Formatters"
@@ -33,17 +46,20 @@
 				"title": "Format Document",
 				"category": "Clean CSS",
 				"enablement": "editorLangId == css"
-			},{
+			},
+			{
 				"command": "clean-css-vscode.FastBeauty",
 				"title": "Fast Beautify Format",
 				"category": "Clean CSS",
 				"enablement": "editorLangId == css"
-			},{
+			},
+			{
 				"command": "clean-css-vscode.FastKBreaks",
 				"title": "Fast Keep Breaks Format",
 				"category": "Clean CSS",
 				"enablement": "editorLangId == css"
-			},{
+			},
+			{
 				"command": "clean-css-vscode.FastCompact",
 				"title": "Fast Compact Format",
 				"category": "Clean CSS",
@@ -58,17 +74,20 @@
 					"when": "editorLangId == css && editorTextFocus"
 				}
 			],
-			"cleanCssMenu.format":[
+			"cleanCssMenu.format": [
 				{
 					"group": "format",
 					"command": "clean-css-vscode.Format"
-				},{
+				},
+				{
 					"group": "format@1",
 					"command": "clean-css-vscode.FastBeauty"
-				},{
+				},
+				{
 					"group": "format@1",
 					"command": "clean-css-vscode.FastKBreaks"
-				},{
+				},
+				{
 					"group": "format@1",
 					"command": "clean-css-vscode.FastCompact"
 				}
@@ -80,23 +99,30 @@
 				"label": "Format Document (Clean CSS)"
 			}
 		],
-		"keybindings":[
+		"keybindings": [
 			{
 				"command": "clean-css-vscode.Format",
 				"key": "shift+alt+f",
 				"when": "editorTextFocus"
 			}
 		],
-		"configuration":[
+		"configuration": [
 			{
 				"title": "Clean CSS",
 				"properties": {
 					"cleanCSS.formatterOptions.compatibility": {
 						"type": "string",
 						"default": "*",
-						"enum": ["*","ie9","ie8","ie7"],
+						"enum": [
+							"*",
+							"ie10",
+							"ie9",
+							"ie8",
+							"ie7"
+						],
 						"enumDescriptions": [
-							"Compatibility mode for Internet Explorer 10+ (default)",
+							"Compatibility mode for Modern Browser and Internet Explorer >11 (default)",
+							"Compatibility mode for Internet Explorer 10+ and 11+",
 							"Compatibility mode for Internet Explorer 9+",
 							"Compatibility mode for Internet Explorer 8+",
 							"Compatibility mode for Internet Explorer 7+"
@@ -105,38 +131,44 @@
 					},
 					"cleanCSS.formatterOptions.format.breaks": {
 						"type": "object",
-						"default": { 
-							"afterAtRule": false, 
-							"afterBlockBegins": false, 
-							"afterBlockEnds": false, 
-							"afterComment": false, 
-							"afterProperty": false, 
-							"afterRuleBegins": false, 
-							"afterRuleEnds": false, 
-							"beforeBlockEnds": false, 
+						"default": {
+							"afterAtRule": false,
+							"afterBlockBegins": false,
+							"afterBlockEnds": false,
+							"afterComment": false,
+							"afterProperty": false,
+							"afterRuleBegins": false,
+							"afterRuleEnds": false,
+							"beforeBlockEnds": false,
 							"betweenSelectors": false
-							},
+						},
 						"markdownDescription": "Controls where to insert line breaks. See [Clean CSS: Formatting Options](https://github.com/jakubpawlowicz/clean-css#formatting-options) for more info."
 					},
 					"cleanCSS.formatterOptions.format.breakWith": {
 						"type": "string",
 						"default": "windows",
-						"enum": ["windows","unix"],
+						"enum": [
+							"windows",
+							"unix"
+						],
 						"markdownDescription": "Controls the new line character, can be `'\\r\\n'` or `'\\n'` (aliased as `'windows'` and `'unix'` or `'crlf'` and `'lf'`); defaults to system one, so former on Windows and latter on Unix"
 					},
 					"cleanCSS.formatterOptions.format.indentBy": {
 						"type": "number",
-						"default": 0 ,
+						"default": 0,
 						"markdownDescription": "Controls number of characters to indent with; defaults to `0`"
 					},
 					"cleanCSS.formatterOptions.format.indentWith": {
 						"type": "string",
 						"default": "space",
-						"enum": ["space", "tab"],
+						"enum": [
+							"space",
+							"tab"
+						],
 						"markdownDescription": "Controls a character to indent with, can be `space` or `tab`; defaults to `space`"
 					},
 					"cleanCSS.formatterOptions.format.spaces": {
-						"type":"object",
+						"type": "object",
 						"default": {
 							"aroundSelectorRelation": false,
 							"beforeBlockBegins": false,
@@ -145,70 +177,75 @@
 						"markdownDescription": "Controls where to insert spaces"
 					},
 					"cleanCSS.formatterOptions.format.wrapAt": {
-						"type":["number","boolean"],
-						"default":false,
+						"type": [
+							"number",
+							"boolean"
+						],
+						"default": false,
 						"minimum": 1,
 						"markdownDescription": "Controls maximum line length; defaults to `false`. Use numbers, `false` to disable it"
 					},
 					"cleanCSS.formatterOptions.format.semicolonAfterLastProperty": {
-						"type":"boolean",
-						"default":false,
+						"type": "boolean",
+						"default": false,
 						"markdownDescription": "Controls removing trailing semicolons in rule; defaults to `false` - means remove"
 					},
 					"cleanCSS.formatterOptions.inline": {
 						"type": "array",
-						"default": ["local"],
+						"default": [
+							"local"
+						],
 						"markdownDescription": "Inline option whitelists which `@import` rules will be processed. See [Clean CSS: Inlining options](https://github.com/jakubpawlowicz/clean-css#inlining-options) for more info."
 					},
-					"cleanCSS.formatterOptions.level.1":{
-						"type":"object",
+					"cleanCSS.formatterOptions.level.1": {
+						"type": "object",
 						"default": {
-							"cleanupCharsets": true, 
-							"normalizeUrls": true, 
-							"optimizeBackground": true, 
-							"optimizeBorderRadius": true, 
-							"optimizeFilter": true, 
-							"optimizeFont": true, 
-							"optimizeFontWeight": true, 
-							"optimizeOutline": true, 
-							"removeEmpty": true, 
-							"removeNegativePaddings": true, 
-							"removeQuotes": true, 
-							"removeWhitespace": true, 
-							"replaceMultipleZeros": true, 
-							"replaceTimeUnits": true, 
-							"replaceZeroUnits": true, 
-							"roundingPrecision": false, 
-							"selectorsSortingMethod": "standard", 
-							"specialComments": "all", 
-							"tidyAtRules": true, 
-							"tidyBlockScopes": true, 
+							"cleanupCharsets": true,
+							"normalizeUrls": true,
+							"optimizeBackground": true,
+							"optimizeBorderRadius": true,
+							"optimizeFilter": true,
+							"optimizeFont": true,
+							"optimizeFontWeight": true,
+							"optimizeOutline": true,
+							"removeEmpty": true,
+							"removeNegativePaddings": true,
+							"removeQuotes": true,
+							"removeWhitespace": true,
+							"replaceMultipleZeros": true,
+							"replaceTimeUnits": true,
+							"replaceZeroUnits": true,
+							"roundingPrecision": false,
+							"selectorsSortingMethod": "standard",
+							"specialComments": "all",
+							"tidyAtRules": true,
+							"tidyBlockScopes": true,
 							"tidySelectors": true
 						},
 						"markdownDescription": "Level 1 optimizations (default) operate on single properties only, e.g. can remove units when not required, turn rgb colors to a shorter hex representation, remove comments, etc. \n >**Tip:** There is an `all: ` shortcut for toggling all options at the same time. \n See [Clean CSS: Level 1 optimizations](https://github.com/jakubpawlowicz/clean-css#level-1-optimizations) for more info."
 					},
-					"cleanCSS.formatterOptions.level.2":{
-						"type":"object",
+					"cleanCSS.formatterOptions.level.2": {
+						"type": "object",
 						"default": {
-							"mergeAdjacentRules": true, 
-							"mergeIntoShorthands": true, 
-							"mergeMedia": true, 
-							"mergeNonAdjacentRules": true, 
-							"mergeSemantically": false, 
-							"overrideProperties": true, 
-							"removeEmpty": true, 
-							"reduceNonAdjacentRules": true, 
-							"removeDuplicateFontRules": true, 
-							"removeDuplicateMediaBlocks": true, 
-							"removeDuplicateRules": true, 
-							"removeUnusedAtRules": false, 
-							"restructureRules": false, 
-							"skipProperties": [] 
+							"mergeAdjacentRules": true,
+							"mergeIntoShorthands": true,
+							"mergeMedia": true,
+							"mergeNonAdjacentRules": true,
+							"mergeSemantically": false,
+							"overrideProperties": true,
+							"removeEmpty": true,
+							"reduceNonAdjacentRules": true,
+							"removeDuplicateFontRules": true,
+							"removeDuplicateMediaBlocks": true,
+							"removeDuplicateRules": true,
+							"removeUnusedAtRules": false,
+							"restructureRules": false,
+							"skipProperties": []
 						},
 						"markdownDescription": "Level 2 optimizations operate at rules or multiple properties level, e.g. can remove duplicate rules, remove properties redefined further down a stylesheet, or restructure rules by moving them around. \n >**Tip:** There is an `all: ` shortcut for toggling all options at the same time. \n See [Clean CSS: Level 2 optimizations](https://github.com/jakubpawlowicz/clean-css#level-2-optimizations) for more info."
 					},
 					"cleanCSS.debugTool.showMessage": {
-						"type":"boolean",
+						"type": "boolean",
 						"default": false,
 						"markdownDescription": "Display information about the use of the formatter. default to `false`"
 					}
@@ -224,16 +261,16 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.52.0",
 		"@types/glob": "^7.1.3",
 		"@types/mocha": "^8.0.4",
-		"@types/node": "^12.11.7",
+		"@types/node": "^12.19.15",
+		"@types/vscode": "^1.52.0",
 		"glob": "^7.1.6",
 		"mocha": "^8.1.3",
 		"typescript": "^4.1.2",
-		"vscode-test": "^1.4.1"
+		"vscode-test": "^1.5.0"
 	},
 	"dependencies": {
-		"clean-css": "~4.2.3"
+		"clean-css": "~5.0.1"
 	}
 }
