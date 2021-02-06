@@ -48,6 +48,3 @@ To see a list of all the changes in this extension see [CHANGELOG.md](CHANGELOG.
 All options in this group go directly to the formatter. `cleanCSS.formatterOptions` object is an `options` object of Clean CSS.
     
 See [Clean CSS: Options](https://github.com/jakubpawlowicz/clean-css#constructor-options) for more info about the `options` object.
-
-# Current Version Changes
-
