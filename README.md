@@ -21,16 +21,16 @@ To see a list of all the changes in this extension see [CHANGELOG.md](CHANGELOG.
 # Features
 - Compress CSS files using Clean CSS optimizer.
 
-![Before //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/css_1.png)
-![After //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/css_2.png)
+![Before](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/css_1.png)
+![After](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/css_2.png)
 
 - Quickly format using different presets, in the editor context menu.
 
-![Editor Context Menu //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/editor_context_menu.png)
+![Editor Context Menu](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/editor_context_menu.png)
 
 - Use "Clean CSS: Format Document" command (Shift+Alt+F) to format using user settings.
 
-![Settings UI //dev](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/dev/images/settings_ui.png)
+![Settings UI](https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/settings_ui.png)
 
 
 # Extension Settings
