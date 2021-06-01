@@ -19,33 +19,30 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 //for "clean-css-vscode.Format" command and others
-async function format(option?: object) {
-  let formatterOptions: any = vscode.workspace.getConfiguration('cleanCSS').get<Object>('formatterOptions');
-  let editor = vscode.window.activeTextEditor;
-  if (editor !== undefined) {
+async function format(option?: CleanCSS.Option) {
+  // Get a CleanCSS.Option object in formatterOptions
+  let formatterOptions: CleanCSS.Option = vscode.workspace.getConfiguration('cleanCSS').get<CleanCSS.Option>('formatterOptions') ?? {};
+
+  // If there is a active TextEditor, call cleanCSS.minify() method to set the output in the TextEditor, calling CleanCSSCallback.
+  if (vscode.window.activeTextEditor !== undefined) {
+    let editor = vscode.window.activeTextEditor;
     new cleanCSS(option ?? formatterOptions)
-      .minify(editor.document.getText(), (error: object, output: { styles: string }) => CleanCSSCallback(error, output, editor));
+      .minify(editor.document.getText(), (errors: string[] | null, output: CleanCSS.Output) => CleanCSSCallback(errors, output, editor));
   } else {
+    // ...else show a error message
     vscode.window.showErrorMessage("Editor not available");
   }
 }
 
 //Use the Debug Output Channel
-function debugInfo(output: any) { 
+function debugInfo(output: CleanCSS.Output) { 
   if (vscode.workspace.getConfiguration('cleanCSS').get('debugTool.showMessage')) {
     debugCh.clear();
     debugCh.show();
-    // Show a list of errors.
-    debugCh.appendLine('ERRORS:');
-    if (output.errors.length) {
-      output.errors.forEach((element: any, index: number) => {
-        debugCh.appendLine("\t" + index + ". " + element);
-      })
-    } else { debugCh.appendLine('\tNo errors found') }
     // Show a list of warnings.
     debugCh.appendLine('WARNINGS:');
     if (output.warnings.length) {
-      output.warnings.forEach((element: any, index: number) => {
+      output.warnings.forEach((element, index) => {
         debugCh.appendLine("\t" + index + ". " + element);
       })
     } else { debugCh.appendLine('\tNo warnings founds') }
@@ -58,19 +55,19 @@ function debugInfo(output: any) {
 }
 
 //Callback for "minify" function of Clean CSS
-function CleanCSSCallback(error: object, output: { styles: string }, editor?: vscode.TextEditor) {
-  // This because typescript need to verify "editor" existence every time
-  if (editor) {
-    editor.edit(edit => {
-      edit.replace(
-        new vscode.Range(0, 0,
-          editor.document.lineCount - 1,
-          editor.document.lineAt(editor.document.lineCount - 1).text.length),
-        output.styles)
-    });
-    //Use Output channel to info.
-    debugInfo(output);
-  } else {
-    vscode.window.showErrorMessage(error.toString());
+function CleanCSSCallback(errors: string[] | null, output: CleanCSS.Output, editor: vscode.TextEditor) {
+  // Just return if there are errors
+  if (errors !== null) {
+    vscode.window.showErrorMessage(errors.toString());
+    return;
   }
+  // Edit the document asociated with the current TextEditor
+  editor.edit(edit => {
+    edit.replace(
+      // Replace need a range (In this case, all the text in the document) and a string to replace the old text (Clean CSS output)
+      new vscode.Range(0, 0, editor.document.lineCount - 1, editor.document.lineAt(editor.document.lineCount - 1).text.length), 
+      output.styles);
+  });
+  //Use Output channel to info.
+  debugInfo(output);
 }
