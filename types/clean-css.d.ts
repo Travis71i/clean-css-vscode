@@ -1,5 +1,18 @@
 // Just to declare interfaces for Option object in Clean CSS
-namespace CleanCSS {
+declare module "clean-css" {
+
+    export interface Output {
+        styles: string;
+        stats: {
+            efficiency: number,
+            minifiedSize: number,
+            originalSize: number,
+            startedAt: number,
+            timeSpent: number
+        },
+        errors: string[],
+        warnings: string[]
+    }
 
     export interface Option {
         compatibility?: Compatibility | CompatibilityShortcuts,
@@ -126,5 +139,5 @@ namespace CleanCSS {
     // Use these as a list of shortcuts
     type CompatibilityShortcuts = '*' | 'ie11' | 'ie10' | 'ie9' | 'ie8' | 'ie7';
     type FormatShortcuts = 'keep-breaks' | 'beautify';
-    type InlineShortcuts = ['local' | 'remote' | 'none' | 'all', string | undefined]
+    type InlineShortcuts = ['local' | 'remote' | 'none' | 'all', string | undefined];
 }
