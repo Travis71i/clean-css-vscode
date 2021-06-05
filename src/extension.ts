@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
+import {Option, Output} from 'clean-css';
 const cleanCSS = require('clean-css');
+
 var debugCh: vscode.OutputChannel;
 
 // List of commands to push.
@@ -19,15 +21,15 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 //for "clean-css-vscode.Format" command and others
-async function format(option?: CleanCSS.Option) {
+async function format(option?: Option) {
   // Get a CleanCSS.Option object in formatterOptions
-  let formatterOptions: CleanCSS.Option = vscode.workspace.getConfiguration('cleanCSS').get<CleanCSS.Option>('formatterOptions') ?? {};
+  let formatterOptions: Option = vscode.workspace.getConfiguration('cleanCSS').get<Option>('formatterOptions') ?? {};
 
   // If there is a active TextEditor, call cleanCSS.minify() method to set the output in the TextEditor, calling CleanCSSCallback.
   if (vscode.window.activeTextEditor !== undefined) {
     let editor = vscode.window.activeTextEditor;
     new cleanCSS(option ?? formatterOptions)
-      .minify(editor.document.getText(), (errors: string[] | null, output: CleanCSS.Output) => CleanCSSCallback(errors, output, editor));
+      .minify(editor.document.getText(), (errors: string[] | null, output: Output) => CleanCSSCallback(errors, output, editor));
   } else {
     // ...else show a error message
     vscode.window.showErrorMessage("Editor not available");
@@ -35,7 +37,7 @@ async function format(option?: CleanCSS.Option) {
 }
 
 //Use the Debug Output Channel
-function debugInfo(output: CleanCSS.Output) { 
+function debugInfo(output: Output) { 
   if (vscode.workspace.getConfiguration('cleanCSS').get('debugTool.showMessage')) {
     debugCh.clear();
     debugCh.show();
@@ -43,9 +45,16 @@ function debugInfo(output: CleanCSS.Output) {
     debugCh.appendLine('WARNINGS:');
     if (output.warnings.length) {
       output.warnings.forEach((element, index) => {
-        debugCh.appendLine("\t" + index + ". " + element);
+        debugCh.appendLine("\t" + index+1 + ". " + element);
       })
     } else { debugCh.appendLine('\tNo warnings founds') }
+    // Show a list of errors.
+    debugCh.appendLine('ERRORS:');
+    if (output.errors.length) {
+      output.errors.forEach((element, index) => {
+        debugCh.appendLine("\t" + index+1 + ". " + element);
+      })
+    } else { debugCh.appendLine('\tNo errors founds') }
     debugCh.appendLine('STATS:');
     // Clean CSS Doc: Using inline options is going to change the size of the file. This shows the stats of the file AFTER the change.
     debugCh.appendLine("\t1. File size: " + output.stats.originalSize + "B (before) -> " + output.stats.minifiedSize + "B (now)");
@@ -55,11 +64,10 @@ function debugInfo(output: CleanCSS.Output) {
 }
 
 //Callback for "minify" function of Clean CSS
-function CleanCSSCallback(errors: string[] | null, output: CleanCSS.Output, editor: vscode.TextEditor) {
+function CleanCSSCallback(errors: string[] | null, output: Output, editor: vscode.TextEditor) {
   // Just return if there are errors
   if (errors !== null) {
-    vscode.window.showErrorMessage(errors.toString());
-    return;
+    vscode.window.showErrorMessage('[Clean CSS] Errors were found | See the Output Channel for more info.');
   }
   // Edit the document asociated with the current TextEditor
   editor.edit(edit => {
