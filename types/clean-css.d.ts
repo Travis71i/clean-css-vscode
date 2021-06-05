@@ -25,72 +25,72 @@ declare module "clean-css" {
 
     //List of interfaces
     interface Compatibility {
-        colors: {
-            hexAlpha: boolean,
-            opacity: boolean
+        colors?: {
+            hexAlpha?: boolean,
+            opacity?: boolean
         },
-        customUnits: {
-            rpx: boolean
+        customUnits?: {
+            rpx?: boolean
         },
-        properties: {
-            backgroundClipMerging: boolean,
-            backgroundOriginMerging: boolean,
-            backgroundSizeMerging: boolean,
-            colors: boolean,
-            ieBangHack: boolean,
-            ieFilters: boolean,
-            iePrefixHack: boolean,
-            ieSuffixHack: boolean,
-            merging: boolean,
-            shorterLengthUnits: boolean,
-            spaceAfterClosingBrace: boolean,
-            urlQuotes: boolean,
-            zeroUnits: boolean
+        properties?: {
+            backgroundClipMerging?: boolean,
+            backgroundOriginMerging?: boolean,
+            backgroundSizeMerging?: boolean,
+            colors?: boolean,
+            ieBangHack?: boolean,
+            ieFilters?: boolean,
+            iePrefixHack?: boolean,
+            ieSuffixHack?: boolean,
+            merging?: boolean,
+            shorterLengthUnits?: boolean,
+            spaceAfterClosingBrace?: boolean,
+            urlQuotes?: boolean,
+            zeroUnits?: boolean
         },
-        selectors: {
-            adjacentSpace: boolean,
-            ie7Hack: boolean,
-            mergeablePseudoClasses: string[],
-            mergeablePseudoElements: string[],
-            mergeLimit: number,
-            multiplePseudoMerging: boolean
+        selectors?: {
+            adjacentSpace?: boolean,
+            ie7Hack?: boolean,
+            mergeablePseudoClasses?: string[],
+            mergeablePseudoElements?: string[],
+            mergeLimit?: number,
+            multiplePseudoMerging?: boolean
         },
-        units: {
-            ch: boolean,
-            in: boolean,
-            pc: boolean,
-            pt: boolean,
-            rem: boolean,
-            vh: boolean,
-            vm: boolean,
-            vmax: boolean,
-            vmin: boolean,
-            vw: boolean
+        units?: {
+            ch?: boolean,
+            in?: boolean,
+            pc?: boolean,
+            pt?: boolean,
+            rem?: boolean,
+            vh?: boolean,
+            vm?: boolean,
+            vmax?: boolean,
+            vmin?: boolean,
+            vw?: boolean
         }
     }
     interface Format {
-        breaks: {
+        breaks?: {
             // Lines breaks can repeat many times if you set a number in those options
-            afterAtRule: boolean | number,
-            afterBlockBegins: boolean | number,
-            afterBlockEnds: boolean | number,
-            afterComment: boolean | number,
-            afterProperty: boolean | number,
-            afterRuleBegins: boolean | number,
-            afterRuleEnds: boolean | number,
-            beforeBlockEnds: boolean | number,
-            betweenSelectors: boolean | number
+            afterAtRule?: boolean | number,
+            afterBlockBegins?: boolean | number,
+            afterBlockEnds?: boolean | number,
+            afterComment?: boolean | number,
+            afterProperty?: boolean | number,
+            afterRuleBegins?: boolean | number,
+            afterRuleEnds?: boolean | number,
+            beforeBlockEnds?: boolean | number,
+            betweenSelectors?: boolean | number
         },
-        breakWith: string,
-        indentBy: number,
-        indentWith: string,
-        spaces: {
-            aroundSelectorRelation: boolean,
-            beforeBlockBegins: boolean,
-            beforeValue: boolean
+        breakWith?: string,
+        indentBy?: number,
+        indentWith?: string,
+        spaces?: {
+            aroundSelectorRelation?: boolean,
+            beforeBlockBegins?: boolean,
+            beforeValue?: boolean
         },
-        wrapAt: boolean,
-        semicolonAfterLastProperty: boolean
+        wrapAt?: boolean,
+        semicolonAfterLastProperty?: boolean
     }
     interface Level {
         0?: {},
