@@ -33,10 +33,7 @@
 	],
 	"activationEvents": [
 		"onLanguage:css",
-		"onCommand:clean-css-vscode.Format",
-		"onCommand:clean-css-vscode.FastBeauty",
-		"onCommand:clean-css-vscode.FastKeepBreaks",
-		"onCommand:clean-css-vscode.FastCompact"
+		"onCommand:clean-css-vscode.Format"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -46,59 +43,17 @@
 				"title": "Format Document",
 				"category": "Clean CSS",
 				"enablement": "editorLangId == css"
-			},
-			{
-				"command": "clean-css-vscode.FastBeauty",
-				"title": "Fast Beautify Format",
-				"category": "Clean CSS",
-				"enablement": "editorLangId == css"
-			},
-			{
-				"command": "clean-css-vscode.FastKBreaks",
-				"title": "Fast Keep Breaks Format",
-				"category": "Clean CSS",
-				"enablement": "editorLangId == css"
-			},
-			{
-				"command": "clean-css-vscode.FastCompact",
-				"title": "Fast Compact Format",
-				"category": "Clean CSS",
-				"enablement": "editorLangId == css"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
-					"submenu": "cleanCssMenu.format",
+					"command": "clean-css-vscode.Format",
 					"group": "1_modification@2",
 					"when": "editorLangId == css && editorTextFocus"
 				}
-			],
-			"cleanCssMenu.format": [
-				{
-					"group": "format",
-					"command": "clean-css-vscode.Format"
-				},
-				{
-					"group": "format@1",
-					"command": "clean-css-vscode.FastBeauty"
-				},
-				{
-					"group": "format@1",
-					"command": "clean-css-vscode.FastKBreaks"
-				},
-				{
-					"group": "format@1",
-					"command": "clean-css-vscode.FastCompact"
-				}
 			]
 		},
-		"submenus": [
-			{
-				"id": "cleanCssMenu.format",
-				"label": "Format Document (Clean CSS)"
-			}
-		],
 		"keybindings": [
 			{
 				"command": "clean-css-vscode.Format",

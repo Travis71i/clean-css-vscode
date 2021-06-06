@@ -6,10 +6,7 @@ var debugCh: vscode.OutputChannel;
 
 // List of commands to push.
 let CommandList: Array<vscode.Disposable> = [
-  vscode.commands.registerCommand('clean-css-vscode.Format', () => format()),
-  vscode.commands.registerCommand('clean-css-vscode.FastBeauty', () => format({ format: 'beautify' })),
-  vscode.commands.registerCommand('clean-css-vscode.FastKBreaks', () => format({ format: 'keep-breaks' })),
-  vscode.commands.registerCommand('clean-css-vscode.FastCompact', () => format({}))
+  vscode.commands.registerCommand('clean-css-vscode.Format', () => format())
 ];
 
 // Activating extension
@@ -21,14 +18,14 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 //for "clean-css-vscode.Format" command and others
-async function format(option?: Option) {
+async function format() {
   // Get a CleanCSS.Option object in formatterOptions
   let formatterOptions: Option = vscode.workspace.getConfiguration('cleanCSS').get<Option>('formatterOptions') ?? {};
 
   // If there is a active TextEditor, call cleanCSS.minify() method to set the output in the TextEditor, calling CleanCSSCallback.
   if (vscode.window.activeTextEditor !== undefined) {
     let editor = vscode.window.activeTextEditor;
-    new cleanCSS(option ?? formatterOptions)
+    new cleanCSS(formatterOptions)
       .minify(editor.document.getText(), (errors: string[] | null, output: Output) => CleanCSSCallback(errors, output, editor));
   } else {
     // ...else show a error message
