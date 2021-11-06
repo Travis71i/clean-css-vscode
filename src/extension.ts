@@ -45,14 +45,14 @@ function debugInfo(output: Output) {
     debugCh.appendLine('WARNINGS:');
     if (output.warnings.length) {
       output.warnings.forEach((element, index) => {
-        debugCh.appendLine("\t" + index+1 + ". " + element);
+        debugCh.appendLine("\t" + (index+1) + ". " + element);
       })
     } else { debugCh.appendLine('\tNo warnings founds') }
     // Show a list of errors.
     debugCh.appendLine('ERRORS:');
     if (output.errors.length) {
       output.errors.forEach((element, index) => {
-        debugCh.appendLine("\t" + index+1 + ". " + element);
+        debugCh.appendLine("\t" + (index+1) + ". " + element);
       })
     } else { debugCh.appendLine('\tNo errors founds') }
     debugCh.appendLine('STATS:');
