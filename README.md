@@ -2,12 +2,17 @@
     <img src="https://raw.githubusercontent.com/Travis71i/clean-css-vscode/master/images/clean-css-vscode-v1.png" alt="Clean CSS for VSCode" width="800px"/>
 </h1>
 
-![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/travis71i.clean-css-vscode)
-![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/travis71i.clean-css-vscode)
-![David](https://david-dm.org/Travis71i/clean-css-vscode.svg)
-![LICENSE](https://img.shields.io/github/license/Travis71i/clean-css-vscode)
+**Notes:** The functionality of this extension depends entirely on [Clean CSS](https://github.com/jakubpawlowicz).
 
-**Notes:** The functionality of this extension depends entirely on Clean CSS. Thanks to [jakubpawlowicz](https://github.com/jakubpawlowicz) for creating and managing it!
+<div style="text-align: center;">
+
+[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/travis71i.clean-css-vscode?color=0066B8&style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=travis71i.clean-css-vscode)
+[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/travis71i.clean-css-vscode?color=0066B8&style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=travis71i.clean-css-vscode)
+[![Clean CSS version used](https://img.shields.io/github/package-json/dependency-version/travis71i/clean-css-vscode/clean-css?color=27AAE1&style=for-the-badge)](https://github.com/clean-css/clean-css/blob/master/History.md#522--2021-10-21)
+[![GitHub license](https://img.shields.io/github/license/travis71i/clean-css-vscode?color=27AAE1&style=for-the-badge)](https://github.com/Travis71i/clean-css-vscode/blob/master/LICENSE.txt)
+[![GitHub issues](https://img.shields.io/github/issues/travis71i/clean-css-vscode?color=27AAE1&style=for-the-badge)](https://github.com/travis71i/clean-css-vscode/issues)
+
+</div>
 
 # What's new
 **Clean CSS has been updated to [version 5.0](https://github.com/jakubpawlowicz/clean-css#whats-new-in-version-50)**.
