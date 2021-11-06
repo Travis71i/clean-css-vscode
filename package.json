@@ -214,11 +214,11 @@
 		"watch": "tsc -watch -p ./"
 	},
 	"devDependencies": {
-		"@types/node": "^15.6.1",
-		"@types/vscode": "^1.56.0",
-		"typescript": "^4.3.2"
+		"@types/node": "^15.14.9",
+		"@types/vscode": "^1.61.0",
+		"typescript": "^4.4.4"
 	},
 	"dependencies": {
-		"clean-css": "^5.1.2"
+		"clean-css": "^5.2.2"
 	}
 }
